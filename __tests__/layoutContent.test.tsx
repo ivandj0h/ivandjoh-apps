@@ -3,7 +3,10 @@ import { render } from "@testing-library/react";
 import { LayoutContent } from "@/app/layout";
 import { expect, jest, describe, it } from '@jest/globals';
 
-jest.mock("@/components/section/Header", () => () => <div>Header</div>);
+const MockHeader = () => <div>Header</div>;
+MockHeader.displayName = "MockHeader";
+
+jest.mock("@/components/section/Header", () => MockHeader);
 
 describe("LayoutContent", () => {
     it("renders the children prop", () => {
