@@ -1,12 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import RootLayout from "../src/app/layout";
-import { expect, jest, describe, it, beforeAll, afterAll } from '@jest/globals';
 
-const MockHeader = () => <div>Header</div>;
-MockHeader.displayName = "MockHeader";
-
-jest.mock("@/components/section/Header", () => MockHeader);
+jest.mock("../src/components/section/Header", () => ({
+    __esModule: true,
+    default: () => <div data-testid="mock-header">MockHeader</div>,
+}));
 
 const originalError = console.error;
 
@@ -34,11 +33,11 @@ describe("RootLayout", () => {
     });
 
     it("renders the Header component inside body", () => {
-        const { getByText, container } = render(
+        const { getByTestId } = render(
             <RootLayout>
                 <div>Test Child</div>
             </RootLayout>
         );
-        expect(container.querySelector("body")!.contains(getByText("Header"))).toBe(true);
+        expect(getByTestId("mock-header")).toBeInTheDocument();
     });
 });

@@ -1,12 +1,12 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { LayoutContent } from "@/app/layout";
-import { expect, jest, describe, it } from '@jest/globals';
 
-const MockHeader = () => <div>Header</div>;
-MockHeader.displayName = "MockHeader";
 
-jest.mock("@/components/section/Header", () => MockHeader);
+jest.mock("../src/components/section/Header", () => ({
+    __esModule: true,
+    default: () => <div data-testid="mock-header">MockHeader</div>,
+}));
 
 describe("LayoutContent", () => {
     it("renders the children prop", () => {
@@ -15,15 +15,15 @@ describe("LayoutContent", () => {
                 <div>Test Child</div>
             </LayoutContent>
         );
-        expect(getByText("Test Child")).toBeTruthy();
+        expect(getByText("Test Child")).toBeInTheDocument();
     });
 
     it("renders the Header component", () => {
-        const { getByText } = render(
+        const { getByTestId } = render(
             <LayoutContent>
                 <div>Test Child</div>
             </LayoutContent>
         );
-        expect(getByText("Header")).toBeTruthy();
+        expect(getByTestId("mock-header")).toBeInTheDocument();
     });
 });
