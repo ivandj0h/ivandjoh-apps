@@ -1,7 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from "next/image";
 import MenuListsItem from "@/components/section/MenuListsItem";
-import {MENU_ITEMS} from "@/lib/constants";
+import {AUTH_MENU_ITEMS, MENU_ITEMS} from "@/lib/constants";
+import AuthMenuListsItem from "@/components/section/AuthMenuListsItem";
 
 const Header: React.FC = () => {
     return (
@@ -9,23 +11,19 @@ const Header: React.FC = () => {
             <div className="w-11/12 md:w-4/5 m-auto flex justify-between items-center">
                 <Link href="/">
                     <div className="flex items-center space-x-2">
-                        <h1 className="text-4xl font-bold">ivandjoh.com</h1>
+                        <Image
+                            src='/images/logo.svg'
+                            alt='logo'
+                            width={30}
+                            height={30}
+                        /> <h1 className="text-2xl font-bold">ivandjoh</h1>
                     </div>
                 </Link>
-                <div className="hidden md:flex space-x-5 text-sm font-semibold">
+                <div className="hidden md:flex space-x-2 font-semibold">
                     <MenuListsItem items={MENU_ITEMS} />
                 </div>
                 <div className="flex items-center space-x-2">
-                    <Link href="/register">
-                        <button className="px-5 py-2 text-indigo-600 font-semibold">
-                            Register
-                        </button>
-                    </Link>
-                    <Link href="/login">
-                        <button className="px-5 py-2 border border-indigo-600 rounded-md text-indigo-600 font-semibold">
-                            SignIn
-                        </button>
-                    </Link>
+                    <AuthMenuListsItem items={AUTH_MENU_ITEMS} />
                 </div>
             </div>
         </div>

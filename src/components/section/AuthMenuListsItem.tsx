@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 import Link from "next/link";
-import { MenuListsItemProps } from "@/lib/interfaces";
+import {AuthMenuItemProps} from "@/lib/interfaces";
 
-const MenuListsItem: React.FC<MenuListsItemProps> = ({ items }) => {
+const AuthMenuListsItem: React.FC<AuthMenuItemProps> = ({ items }) => {
     return (
-        <ul className="flex space-x-5">
+        <ul className="flex">
             {items.map(item => (
                 <li key={item.id}>
                     <Link href={item.path} className="flex gap-2 items-center px-5 py-2 text-green-700 font-semibold">
@@ -15,6 +15,6 @@ const MenuListsItem: React.FC<MenuListsItemProps> = ({ items }) => {
             ))}
         </ul>
     );
-};
+}
 
-export default MenuListsItem;
+export default AuthMenuListsItem;
