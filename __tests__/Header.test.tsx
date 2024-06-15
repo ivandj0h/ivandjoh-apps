@@ -1,28 +1,26 @@
-import React from "react";
-import { render } from '@testing-library/react';
-import Header from "../src/components/section/Header";
-import { MENU_ITEMS } from "@/lib/constants";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import Header from '../src/components/section/Header';
+import { MENU_ITEMS, AUTH_MENU_ITEMS } from '@/lib/constants';
 
-describe("Header", () => {
-    it("renders the Header text", () => {
-        const { getByText } = render(<Header />);
-        expect(getByText("ivandjoh.com")).toBeTruthy();
+describe('Header', () => {
+    it('renders the logo and title', () => {
+        render(<Header />);
+        expect(screen.getByAltText('logo')).toBeInTheDocument();
+        expect(screen.getByText('ivandjoh')).toBeInTheDocument();
     });
 
-    it("renders navigation links", () => {
-        const { getByText } = render(<Header />);
+    it('renders all main menu items', () => {
+        render(<Header />);
         MENU_ITEMS.forEach(item => {
-            expect(getByText(item.menuTitle)).toBeTruthy();
+            expect(screen.getByText(item.menuTitle)).toBeInTheDocument();
         });
     });
 
-    it("renders the Register button", () => {
-        const { getByText } = render(<Header />);
-        expect(getByText("Register")).toBeTruthy();
-    });
-
-    it("renders the SignIn button", () => {
-        const { getByText } = render(<Header />);
-        expect(getByText("SignIn")).toBeTruthy();
+    it('renders all auth menu items', () => {
+        render(<Header />);
+        AUTH_MENU_ITEMS.forEach(item => {
+            expect(screen.getByText(item.menuTitle)).toBeInTheDocument();
+        });
     });
 });
