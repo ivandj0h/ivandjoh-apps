@@ -62,7 +62,8 @@ detailed step-by-step guide on how to proceed
   ```
 
 - Step 4: Write Initial Tests (Red Phase)
-  For `details of the Test Cases` you can find it directly on the folder `__test__`
+  
+    For `details of the Test Cases` you can find it directly on the folder `__test__`
 
 ### All Unit Test Command
 
@@ -84,5 +85,15 @@ This test command use for a specific component testing
 
 This is `The Result` of `Current Test` on `June 15th, 2024`
 
+- First Test
+
 ![layout](/public/unit_test/all_test_001.png)
 
+- Second Test after add new Component
+
+![layout](/public/unit_test/all_test_002.png)
+
+
+## Credit 
+
+Developend by [ivandjoh](https://www.linkedin.com/in/ivandjoh/)
