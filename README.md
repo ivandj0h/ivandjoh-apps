@@ -27,58 +27,58 @@ detailed step-by-step guide on how to proceed
 - Step 2: Set Up the Project
     - Initialize the Project
     - Install Necessary Dependencies
-    - Step 3: Set Up Testing Framework
+- Step 3: Set Up Testing Framework
 
-      For `Testing` i use `Jest`, here some of the setups :
+  For `Testing` i use `Jest`, here some of the setups :
 
-        - Here is my `Jest Configuration` on file `jest.config.ts`
+    - Here is my `Jest Configuration` on file `jest.config.ts`
 
-        ```typescript
-        const createJestConfig = nextJest({
-        dir: './',
-        });
+    ```typescript
+    const createJestConfig = nextJest({
+    dir: './',
+    });
     
-        const customJestConfig: Config = {
-        clearMocks: true,
-        collectCoverage: true,
-        coverageDirectory: 'coverage',
-        coverageProvider: 'v8',
-        moduleNameMapper: {
-        '^@/(.*)$': '<rootDir>/src/$1',
-        '\\.(css|less)$': 'identity-obj-proxy',
-        },
-        setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-        testEnvironment: 'jsdom',
-        testMatch: [
-        '**/__tests__/**/*.[jt]s?(x)',
-        '**/?(*.)+(spec|test).[tj]s?(x)',
-        ],
-      };
-      ```
-        - This is my `jest.setup.ts` file
+    const customJestConfig: Config = {
+    clearMocks: true,
+    collectCoverage: true,
+    coverageDirectory: 'coverage',
+    coverageProvider: 'v8',
+    moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(css|less)$': 'identity-obj-proxy',
+    },
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+    testEnvironment: 'jsdom',
+    testMatch: [
+    '**/__tests__/**/*.[jt]s?(x)',
+    '**/?(*.)+(spec|test).[tj]s?(x)',
+    ],
+  };
+  ```
+    - This is my `jest.setup.ts` file
 
-      ```typescript
-      import '@testing-library/jest-dom'
-      ```
+  ```typescript
+  import '@testing-library/jest-dom'
+  ```
 
 - Step 4: Write Initial Tests (Red Phase)
   For `details of the Test Cases` you can find it directly on the folder `__test__`
 
-    ### All Unit Test Command
+### All Unit Test Command
 
-    This test command use for all components testing
+This test command use for all components testing
 
-    ```bash
+```bash
     npm test (for all components)
-    ```
+   ```
 
-    ### Specific Test ( ex: layout component )
+### Specific Test ( ex: layout component )
 
-    This test command use for a specific component testing
+This test command use for a specific component testing
 
-    ```bash
+```bash
     npm test -- --testPathPattern=layout
-    ```
+```
 
 ### Unit Test Captured
 
